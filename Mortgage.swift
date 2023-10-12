@@ -7,15 +7,14 @@
 
 import Foundation
 
-//class MortgageCal: ObservableObject {
-//    @Published var mortgage: Mortgage = Mortgage(loanAmount: 0.0, nPayment: 0, rate: 0.0)
-//}
 struct Mortgage {
     var house: Double?
+    var downPay: Double?
     var loanAmount: Double = 0.0
     var nPayment: Int = 0
     var rate: Double = 0.0
     var tax: Double?
+    var taxRate: Double = 0.87
     var baoHiem: Double?
 //    init(loanAmount: Double, nPayment: Int, rate: Double) {
 //        self.loanAmount = loanAmount
@@ -68,7 +67,7 @@ extension Mortgage {
         let nha = house ?? 0
         var thue: Double = 0
         if tax == nil {
-            thue = (nha * 0.87) / 1200
+            thue = (nha * taxRate) / 1200
             return thue
         } else {
             thue = tax ?? 0

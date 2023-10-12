@@ -8,46 +8,65 @@ import Foundation
 import SwiftUI
 //@available(iOS 17.0, *)
 struct ContentView: View {
-    @State private var mortgage: Mortgage = Mortgage()
-//    @State private var house = ""
-    @State private var downP = ""
-    @State private var loanAmount = ""
+    @Binding var mortgage: Mortgage
     @State private var nPayment = ""
     @State private var rate = ""
     
     var body: some View {
-        NavigationStack {
-            List {
+            VStack  {
                 Section(content: {
-//                    TextField("Home price", text: $house)
-                    TextField(value: $mortgage.house, format: .number, label: {Text("Home price")})
-                    TextField("Down payment", text: $downP)
-                    TextField("Loan term, years", text: $nPayment)
-                    TextField("Interest rate", text: $rate)
-                        .onChange(of: rate, perform:  { _ in
-                                cal()
-                        })
+                    HStack {
+                        Text("Home:")
+                        TextField(value: $mortgage.house, format: .number, label: {Text("Home price")})
+                            .keyboardType(.numberPad)
+                    }
+                    HStack{
+                        Text("Down pay:")
+                        TextField(value: $mortgage.downPay, format: .number, label: {Text("Down payment")})
+                            .keyboardType(.numberPad)
+                            .onChange(of: mortgage.downPay, perform:  { _ in
+                                if let num = mortgage.downPay {
+                                    if num > 10 {cal()}}
+                            })
+                    }
+                    HStack{
+                        Text("In years:")
+                        TextField("Loan term, years", text: $nPayment)
+                            .keyboardType(.numberPad)
+                    }
+                    HStack {
+                        Text("Rate:")
+                        TextField("Interest rate", text: $rate)
+                            .keyboardType(.decimalPad)
+                            .onChange(of: rate, perform:  { _ in
+                                    cal()
+                            })
+                    }
                                         
                 })
-                Section("Monthly", content: {
-    //                Text("Payments")
-                    
-                    TextField(value: $mortgage.tax, format: .number, label: {Text("Tax adjust?")})
-                        
-                    TextField(value: $mortgage.baoHiem, format: .number, label: {Text("Insurance")})
-                    Text("Payment included $\(mortgage.tinhThue(), specifier: "%1.f") tax, $ \(baoHiem(), specifier: "%1.f") other")
-                    Text("$ \(payment , specifier: "%1.f")")
-                    
+                Section("Property tax monthly", content: {
+//                    TextField(value: $mortgage.tax, format: .number, label: {Text("Tax adjust?")})
+//                        .keyboardType(.numbersAndPunctuation)
+                    SliderRateView(dieuChinh: $mortgage.taxRate)
+                    TextField(value: $mortgage.baoHiem, format: .number, label: {Text("Insurance and other")})
+                        .keyboardType(.numbersAndPunctuation)
+                    Text("Payment included $\(mortgage.tinhThue(), specifier: "%.1f") tax, other $ \(baoHiem(), specifier: "%.1f")")
+    //                    Text("$ \(payment , specifier: "%1.f")")
+                        .padding([.bottom], 50)
                     
                 })
-            }
-            .listStyle(.plain)
-            .navigationTitle("Mortgage Preview")
-    //        .onChange(of: rate){
-    //            cal()
-    //        }
-            
-        }
+            }.padding()
+                .listStyle(.automatic)
+                .toolbar(content: {
+                    ToolbarItem(placement: .topBarTrailing, content: {
+                        Button("Reset", action: {
+                            mortgage.house = nil
+                            mortgage.downPay = nil
+                            nPayment = ""
+                            rate = ""
+                        })
+                    })
+                })
     }//body
     var payment: Double {
         mortgage.paymentM() + mortgage.tinhThue() + baoHiem()
@@ -60,7 +79,7 @@ struct ContentView: View {
 
     func cal(){
         if let nha = mortgage.house,
-        let down = Double(downP),
+        let down = mortgage.downPay,
            let pay = Int(nPayment),
            let rate = Double(rate) {
             let loan = nha - down
@@ -69,34 +88,11 @@ struct ContentView: View {
             mortgage.rate = rate
         }
     }
-    
-//    func tinhThue() -> Double {
-//        var nha = mortgage.house ?? 0
-//        var thue: Double = 0
-//        if mortgage.tax == nil {
-//            thue = (nha * 0.87) / 1200
-//            return thue
-//        } else {
-//            thue = mortgage.tax ?? 0
-//        }
-//        return thue
-//    }
-//    func tinhThue() -> Double{
-//        var thue: Double = 0
-//        if mortgage.tax == nil{
-//            if let nha = Double(house){
-//                thue = (nha * 0.87) / 1200
-//            }
-//            return thue
-//        } else {
-//            thue = mortgage.tax ?? 0
-//        }
-//        return thue
-//    }
+ 
 }
 
 #Preview {
-    ContentView()
+    ContentView(mortgage: .constant(.preview))
 }
 
 

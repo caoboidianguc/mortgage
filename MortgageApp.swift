@@ -9,11 +9,10 @@ import SwiftUI
 
 @main
 struct MortgageApp: App {
-//    @StateObject private var mortgate = MortgageCal()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
                
         }
     }
