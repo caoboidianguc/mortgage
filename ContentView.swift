@@ -30,8 +30,8 @@ struct ContentView: View {
                             })
                     }
                     HStack{
-                        Text("In years:")
-                        TextField("Loan term, years", text: $nPayment)
+                        Text("Fixed years:")
+                        TextField("Loan term", text: $nPayment)
                             .keyboardType(.numberPad)
                     }
                     HStack {
@@ -48,16 +48,25 @@ struct ContentView: View {
 //                    TextField(value: $mortgage.tax, format: .number, label: {Text("Tax adjust?")})
 //                        .keyboardType(.numbersAndPunctuation)
                     SliderRateView(dieuChinh: $mortgage.taxRate)
-                    TextField(value: $mortgage.baoHiem, format: .number, label: {Text("Insurance and other")})
-                        .keyboardType(.numbersAndPunctuation)
-                    Text("Payment included $\(mortgage.tinhThue(), specifier: "%.1f") tax, other $ \(baoHiem(), specifier: "%.1f")")
-    //                    Text("$ \(payment , specifier: "%1.f")")
+                    HStack{
+                        Text("Insurance & other:")
+                        TextField(value: $mortgage.baoHiem, format: .number, label: {Text("Amount")})
+                            .keyboardType(.numbersAndPunctuation)
+                    }
+                    Text("You should consider Mortgage insurance and House insurance")
+                        .font(.subheadline)
                         .padding([.bottom], 50)
                     
                 })
-            }.padding()
+            }
+            .padding()
                 .listStyle(.automatic)
                 .toolbar(content: {
+                    ToolbarItem(placement: .keyboard, content: {
+                        Button("Done", action: {
+                            UIApplication.shared.endKey()
+                        })
+                    })
                     ToolbarItem(placement: .topBarTrailing, content: {
                         Button("Reset", action: {
                             mortgage.house = nil
@@ -67,7 +76,10 @@ struct ContentView: View {
                         })
                     })
                 })
+        
     }//body
+    
+    
     var payment: Double {
         mortgage.paymentM() + mortgage.tinhThue() + baoHiem()
     }
@@ -97,3 +109,8 @@ struct ContentView: View {
 
 
 
+extension UIApplication {
+    func endKey(){
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}

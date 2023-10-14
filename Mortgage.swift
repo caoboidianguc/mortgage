@@ -16,11 +16,7 @@ struct Mortgage {
     var tax: Double?
     var taxRate: Double = 0.87
     var baoHiem: Double?
-//    init(loanAmount: Double, nPayment: Int, rate: Double) {
-//        self.loanAmount = loanAmount
-//        self.nPayment = nPayment
-//        self.rate = rate
-//    }
+    
     var rateInterestMonthly: Double {
         rate/1200.0
     }
@@ -31,6 +27,16 @@ struct Mortgage {
 
 
 extension Mortgage {
+    func tienVayNo() -> Double {
+        var tienVay: Double = 0
+        tienVay = loanAmount / Double(nPayment)
+        return tienVay
+    }
+    func tienLoi() -> Double {
+        var tienLoi: Double = 0.0
+        tienLoi = loanAmount * rateInterestMonthly
+        return tienLoi
+    }
     
     var phanTuSo: Decimal {
          1 + Decimal(rateInterestMonthly)

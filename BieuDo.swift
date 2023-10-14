@@ -17,14 +17,23 @@ struct BieuDo: View {
         HStack{
             VStack(alignment: .leading){
                 Text("Monthly payment")
-                Text("$ \(tong , specifier: "%1.f")").font(.title)
+                Text("$ \(tong , specifier: "%1.f")").font(.largeTitle)
+                    .foregroundStyle(.green)
                 HStack{
                     Image(systemName: "circle.circle").foregroundStyle(.blue)
-                    Text("Principal & interest").font(.subheadline)
+                    Text("Principal $\(principal, specifier: "%1.f")").font(.subheadline)
+                }
+                HStack{
+                    Image(systemName: "circle.circle").foregroundStyle(.blue)
+                    Text("Interest $\(mortgage.tienLoi(), specifier: "%1.f")").font(.subheadline)
                 }
                 HStack{
                     Image(systemName: "circle.circle").foregroundStyle(.red)
-                    Text("Other").font(.subheadline)
+                    Text("Tax $\(thue , specifier: "%1.f")").font(.subheadline)
+                }
+                HStack{
+                    Image(systemName: "circle.circle").foregroundStyle(.gray)
+                    Text("Other $\(cungBaoHiem , specifier: "%1.f")").font(.subheadline)
                 }
             }
             Spacer()
@@ -40,6 +49,12 @@ struct BieuDo: View {
                     .trim(from: cungPrincipal, to: cungThue)
                     .stroke(.red, style: StrokeStyle(lineWidth: 42, lineCap: .butt))
                     .opacity(0.4)
+                
+                Circle()
+                    .rotation(Angle(degrees: -90))
+                    .trim(from: cungThue, to: baoHiem)
+                    .stroke(.gray, style: StrokeStyle(lineWidth: 42, lineCap: .butt))
+                    .opacity(0.4)
             }
         }
         .padding(.leading)
@@ -48,12 +63,16 @@ struct BieuDo: View {
        mortgage.paymentM() / tongCung
     }
     var cungThue: Double {
-        (mortgage.tinhThue() + mortgage.paymentM() + cungBaoHiem) / tongCung
+        (mortgage.tinhThue() + mortgage.paymentM()) / tongCung
     }
     var cungBaoHiem: Double {
         mortgage.baoHiem ?? 0.0
     }
-   
+    var baoHiem: Double {
+        (mortgage.tinhThue() + mortgage.paymentM() + cungBaoHiem) / tongCung
+    }
+    var principal: Double{ mortgage.paymentM() - mortgage.tienLoi() }
+    var thue: Double{mortgage.tinhThue()}
 }
 
 #Preview {

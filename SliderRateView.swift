@@ -16,11 +16,11 @@ struct SliderRateView: View {
                label: {
             Text("Rate interest")
         }, minimumValueLabel: {
-            Text("0.3%")
+            Text("\(dieuChinh, specifier: "%.2f")%")
         }) {
             Text("2.5%")
         }
-        Text("\(dieuChinh, specifier: "%.2f")%")
+        
     }
 }
 

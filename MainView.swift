@@ -14,7 +14,6 @@ struct MainView: View {
         NavigationStack {
             ScrollView {
                 ContentView(mortgage: $mortgage)
-                
                 BieuDo(mortgage: mortgage, tong: payment)
                     .opacity((mortgage.rate == 0.0 ? 0.0 : 0.7))
 //                    .offset(y: -250)
