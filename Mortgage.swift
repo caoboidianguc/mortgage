@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Mortgage {
+struct Mortgage: Identifiable {
+    var id: UUID = UUID()
     var house: Double?
     var downPay: Double?
     var loanAmount: Double = 0.0
@@ -16,15 +17,29 @@ struct Mortgage {
     var tax: Double?
     var taxRate: Double = 0.87
     var baoHiem: Double?
+    var billNum: Int = 1
     
     var rateInterestMonthly: Double {
         rate/1200.0
     }
-    
-    
+    var thangBill: [Mortgage] = []
 }
 
-
+extension Mortgage {
+    
+    mutating func traTheoThang() async -> [Mortgage] {
+        var mortgate: [Mortgage] = []
+        while nPayment > 0 {
+            let tienGocDatra = paymentM() - tienLoi()
+            let tienGocConLai = loanAmount - tienGocDatra
+            self.loanAmount = tienGocConLai
+            mortgate.append(self)
+            billNum += 1
+            nPayment -= 1
+        }
+        return mortgate
+    }
+}
 
 extension Mortgage {
     func tienVayNo() -> Double {
@@ -67,7 +82,7 @@ extension Mortgage {
         return thuong * loanAmount
     }
     
-    static var preview: Mortgage = Mortgage(loanAmount: 155000.0, nPayment: 360, rate: 4.125)
+    static var preview: Mortgage = Mortgage(loanAmount: 155000.0, nPayment: 5, rate: 4.125)
     
     func tinhThue() -> Double {
         let nha = house ?? 0
@@ -80,4 +95,11 @@ extension Mortgage {
         }
         return thue
     }
+    
+    var payment: Double {
+        paymentM() + tinhThue() + (baoHiem ?? 0)
+    }
 }
+
+
+

@@ -12,12 +12,11 @@ struct BieuDo: View {
     var tongCung: Double {
         mortgage.paymentM() + mortgage.tinhThue() + cungBaoHiem
     }
-    var tong: Double
     var body: some View {
         HStack{
             VStack(alignment: .leading){
                 Text("Monthly payment")
-                Text("$ \(tong , specifier: "%1.f")").font(.largeTitle)
+                Text("$ \(mortgage.payment , specifier: "%1.f")").font(.largeTitle)
                     .foregroundStyle(.green)
                 HStack{
                     Image(systemName: "circle.circle").foregroundStyle(.blue)
@@ -43,6 +42,12 @@ struct BieuDo: View {
                     .trim(from: 0.005, to: cungPrincipal - 0.005)
                     .stroke(.blue, style: StrokeStyle(lineWidth: 42, lineCap: .butt))
                     .opacity(0.8)
+                    .overlay(content: {
+                        HStack{
+                            Image(systemName: "circle.circle").foregroundStyle(.blue)
+                            Text("$\(mortgage.paymentM(), specifier: "%1.f")").font(.subheadline)
+                        }
+                    })
                 
                 Circle()
                     .rotation(Angle(degrees: -90))
@@ -76,7 +81,7 @@ struct BieuDo: View {
 }
 
 #Preview {
-    BieuDo(mortgage: .preview,tong: 2100.1)
+    BieuDo(mortgage: .preview)
 }
 
 

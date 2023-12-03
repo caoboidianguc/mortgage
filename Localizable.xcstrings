@@ -1,0 +1,277 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%.2f%%" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.2f %%"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "$ %1.f" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "$ %1.f"
+          }
+        }
+      }
+    },
+    "$%1.f" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "$%1.f"
+          }
+        }
+      }
+    },
+    "2.5%" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2.5%"
+          }
+        }
+      }
+    },
+    "Amount" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Số Tiền"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xong"
+          }
+        }
+      }
+    },
+    "Down pay:" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đặt cọc"
+          }
+        }
+      }
+    },
+    "Down payment" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiền đặt cọc"
+          }
+        }
+      }
+    },
+    "Fixed years:" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mấy Năm:"
+          }
+        }
+      }
+    },
+    "Home price" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giá nhà"
+          }
+        }
+      }
+    },
+    "Home:" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nhà:"
+          }
+        }
+      }
+    },
+    "Insurance & other:" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bảo hiểm & lặt vặt:"
+          }
+        }
+      }
+    },
+    "Interest" : {
+
+    },
+    "Interest $%1.f" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiền lãi $%1.f"
+          }
+        }
+      }
+    },
+    "Interest rate" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lãi xuất"
+          }
+        }
+      }
+    },
+    "Loan" : {
+
+    },
+    "Loan term" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thời hạn vay"
+          }
+        }
+      }
+    },
+    "Monthly - Pay - Interest - Princ - Loan" : {
+
+    },
+    "Monthly payment" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trả hàng tháng"
+          }
+        }
+      }
+    },
+    "Mortgage Preview" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xem Tiền Vay"
+          }
+        }
+      }
+    },
+    "Other $%1.f" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Khác $%1.f"
+          }
+        }
+      }
+    },
+    "Payment" : {
+
+    },
+    "Principal" : {
+
+    },
+    "Principal $%1.f" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiền gốc $%1.f"
+          }
+        }
+      }
+    },
+    "Property tax monthly" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thuế nhà hàng tháng"
+          }
+        }
+      }
+    },
+    "Rate interest" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lãi xuất"
+          }
+        }
+      }
+    },
+    "Rate:" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tỉ lệ:"
+          }
+        }
+      }
+    },
+    "Reset" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Xoá"
+          }
+        }
+      }
+    },
+    "Tax $%1.f" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thuế $%1.f"
+          }
+        }
+      }
+    },
+    "You should consider Mortgage insurance and House insurance" : {
+      "localizations" : {
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn lên cân nhắc tiền bảo hiểm khoản nợ và bảo hiểm nhà"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

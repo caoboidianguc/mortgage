@@ -12,7 +12,7 @@ struct SliderRateView: View {
     var body: some View {
         Slider(value: $dieuChinh,
                in: 0.3...2.5,
-               step: 0.1,
+               step: 0.05,
                label: {
             Text("Rate interest")
         }, minimumValueLabel: {

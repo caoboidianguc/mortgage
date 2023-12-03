@@ -71,6 +71,9 @@ struct ContentView: View {
                         Button("Reset", action: {
                             mortgage.house = nil
                             mortgage.downPay = nil
+                            mortgage.loanAmount = 0.0
+                            mortgage.baoHiem = nil
+                            mortgage.rate = 0.0
                             nPayment = ""
                             rate = ""
                         })
@@ -78,16 +81,7 @@ struct ContentView: View {
                 })
         
     }//body
-    
-    
-    var payment: Double {
-        mortgage.paymentM() + mortgage.tinhThue() + baoHiem()
-    }
-    
-    func baoHiem() -> Double {
-        guard let baohiem = mortgage.baoHiem else {return 0.0}
-        return baohiem
-    }
+   
 
     func cal(){
         if let nha = mortgage.house,
